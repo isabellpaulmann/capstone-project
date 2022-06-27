@@ -1,6 +1,5 @@
 import {createGlobalStyle} from 'styled-components';
 
-// Trick prettier into formatting "createGlobalStyle"
 const styled = {createGlobalStyle};
 
 export default styled.createGlobalStyle`
@@ -9,14 +8,10 @@ export default styled.createGlobalStyle`
   }
 
   body {
+    color: white;
+    background-color: #383233;
     margin: 0;
     font-size: 1.125rem;
     font-family: sans-serif;
-  }
-
-  button,
-  input,
-  textarea {
-    font: inherit;
   }
 `;

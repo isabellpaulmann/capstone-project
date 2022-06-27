@@ -1,3 +1,14 @@
+import ImageContainer from './components/ImageContainer';
+import Logo from './images/logo.svg';
+import StyledHeader from './styled/StyledHeader';
+
 export default function App() {
-  return <div>App goes here</div>;
+  return (
+    <>
+      <StyledHeader>
+        <img src={Logo} alt="App Logo" />
+      </StyledHeader>
+      <ImageContainer></ImageContainer>
+    </>
+  );
 }
