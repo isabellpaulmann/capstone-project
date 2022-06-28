@@ -1,4 +1,4 @@
-const data = [
+const wallpapers = [
   {
     id: '1',
     image: '/wallpaper1.png',
@@ -61,4 +61,4 @@ const data = [
   },
 ];
 
-export default data;
+export default wallpapers;

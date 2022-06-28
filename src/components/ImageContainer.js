@@ -1,34 +1,28 @@
-import {useState} from 'react';
 import styled from 'styled-components';
 
 import StyledImageContainer from '../styled/StyledImageContainer';
-import data from '../wallpaperData';
+import wallpapers from '../wallpaperData';
 
 import DownloadButton from './DownloadButton';
 
 export default function ImageContainer() {
-  const [wallpapers, setWallpapers] = useState(data);
-
   return (
-    <StyledBox>
-      <StyledImageContainer>
-        {wallpapers.map(wallpaper => {
-          return (
-            <>
-              <img key={wallpaper.id} src={wallpaper.image} alt={wallpaper.altIMG} />{' '}
-              <a href={wallpaper.image} download={wallpaper.image}>
-                <DownloadButton />
-              </a>
-            </>
-          );
-        })}
-      </StyledImageContainer>
-    </StyledBox>
+    <StyledImageContainer>
+      {wallpapers.map(wallpaper => {
+        return (
+          <article key={wallpaper.id}>
+            <img src={wallpaper.image} alt={wallpaper.altIMG} />{' '}
+            <Tag href={wallpaper.image} download={wallpaper.image}>
+              <DownloadButton />
+            </Tag>
+          </article>
+        );
+      })}
+    </StyledImageContainer>
   );
 }
 
-const StyledBox = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 0 10px;
+const Tag = styled.a`
+  display: flex;
+  justify-content: center;
 `;

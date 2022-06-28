@@ -4,7 +4,8 @@ const StyledHeader = styled.header`
   display: grid;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding-top: 6px;
+  padding-bottom: 5px;
   position: sticky;
   top: 0;
   width: 100%;
