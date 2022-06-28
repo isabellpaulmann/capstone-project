@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 const StyledImageContainer = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 15px;
-  position: relative;
+  margin: 0 20px 20px 15px;
+
   img {
     width: 100%;
     height: auto;

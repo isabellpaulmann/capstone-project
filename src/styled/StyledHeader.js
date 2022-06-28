@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const StyledHeader = styled.header`
   display: grid;
   align-items: center;
-  margin: auto;
   justify-content: center;
   padding: 5px;
   position: sticky;

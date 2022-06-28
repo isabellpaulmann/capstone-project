@@ -1,9 +1,12 @@
 import downloadButton from '../images/Download.svg';
+import StyledDownloadButton from '../styled/StyledDownloadButton';
 
 export default function DownloadButton() {
   return (
     <>
-      <img src={downloadButton} alt="download"></img>
+      <StyledDownloadButton>
+        <img src={downloadButton} alt="download" />
+      </StyledDownloadButton>
     </>
   );
 }
