@@ -16,6 +16,11 @@ export default function DownloadButton() {
       background: 'transparent',
       border: 'none',
     },
+
+    overlay: {
+      backdropFilter: 'blur(5px)',
+      backgroundColor: 'transparent',
+    },
   };
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
