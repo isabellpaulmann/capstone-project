@@ -11,10 +11,10 @@ export default function ImageContainer() {
       {wallpapers.map(wallpaper => {
         return (
           <article key={wallpaper.id}>
-            <img src={wallpaper.image} alt={wallpaper.altIMG} />{' '}
-            <Tag href={wallpaper.image} download={wallpaper.image}>
+            <img src={wallpaper.image} alt={wallpaper.altIMG} />
+            <DownloadLink href={wallpaper.image} download={wallpaper.image}>
               <DownloadButton />
-            </Tag>
+            </DownloadLink>
           </article>
         );
       })}
@@ -22,7 +22,7 @@ export default function ImageContainer() {
   );
 }
 
-const Tag = styled.a`
+const DownloadLink = styled.a`
   display: flex;
   justify-content: center;
 `;

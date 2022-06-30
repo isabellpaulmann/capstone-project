@@ -8,7 +8,7 @@ export default function App() {
       <StyledHeader>
         <img src={Logo} alt="App Logo" />
       </StyledHeader>
-      <ImageContainer></ImageContainer>
+      <ImageContainer />
     </>
   );
 }
