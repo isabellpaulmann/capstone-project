@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import Modal from 'react-modal';
 
-import downloadButton from '../images/Download.svg';
 import downloadtrue from '../images/downloadtrue.svg';
+import polygon from '../images/polygon.svg';
 import StyledDownloadButton from '../styled/StyledDownloadButton';
 
 export default function DownloadButton() {
@@ -37,7 +37,8 @@ export default function DownloadButton() {
   return (
     <>
       <StyledDownloadButton onClick={openModal}>
-        <img src={downloadButton} alt="download" />
+        download
+        <img src={polygon} alt="download" />
       </StyledDownloadButton>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Modal">
         <img src={downloadtrue} alt="download complete" />

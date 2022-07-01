@@ -25,7 +25,9 @@ export default function ImageContainerLight() {
             <article key={wallpaperLight.id}>
               <img src={wallpaperLight.image} alt={wallpaperLight.altIMG} />
               <DownloadLink href={wallpaperLight.image} download={wallpaperLight.image}>
-                <DownloadButton />
+                <StyledColorButton>
+                  <DownloadButton />
+                </StyledColorButton>
               </DownloadLink>
             </article>
           );
@@ -35,7 +37,14 @@ export default function ImageContainerLight() {
   );
 }
 
+const StyledColorButton = styled.div`
+  button {
+    background-color: #f09c9c;
+  }
+`;
+
 const DownloadLink = styled.a`
   display: flex;
   justify-content: center;
+  text-decoration: none;
 `;

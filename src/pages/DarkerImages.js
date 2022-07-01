@@ -25,7 +25,9 @@ export default function ImageContainerDark() {
             <article key={wallpaperDark.id}>
               <img src={wallpaperDark.image} alt={wallpaperDark.altIMG} />
               <DownloadLink href={wallpaperDark.image} download={wallpaperDark.image}>
-                <DownloadButton />
+                <StyledColorButton>
+                  <DownloadButton />
+                </StyledColorButton>
               </DownloadLink>
             </article>
           );
@@ -35,7 +37,14 @@ export default function ImageContainerDark() {
   );
 }
 
+const StyledColorButton = styled.div`
+  button {
+    background-color: #495b70;
+  }
+`;
+
 const DownloadLink = styled.a`
   display: flex;
   justify-content: center;
+  text-decoration: none;
 `;

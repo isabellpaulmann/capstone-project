@@ -32,11 +32,11 @@ const StyledSection = styled.section`
 const StyledLighterButton = styled.button`
   height: 100px;
   width: 240px;
-  background: #f09c9c;
+  background: #ca8484;
   border: 5px solid #494949;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  font-family: Jua;
+  font-family: Jua, sans-serif;
   color: white;
   font-size: 2rem;
 `;
@@ -44,11 +44,11 @@ const StyledLighterButton = styled.button`
 const StyledDarkerButton = styled.button`
   height: 100px;
   width: 240px;
-  background: #495b70;
+  background: #324050;
   border: 5px solid #494949;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  font-family: Jua;
+  font-family: Jua, sans-serif;
   color: white;
   font-size: 2rem;
 `;
