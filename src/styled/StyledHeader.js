@@ -7,6 +7,7 @@ const StyledHeader = styled.header`
   align-items: center;
   padding-top: 6px;
   padding-bottom: 5px;
+  padding-right: 5px;
   position: sticky;
   top: 0;
   width: 100%;

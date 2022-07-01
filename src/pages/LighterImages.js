@@ -6,11 +6,11 @@ import homebutton from '../images/homebutton.svg';
 import Logo from '../images/logo.svg';
 import StyledHeader from '../styled/StyledHeader';
 import StyledImageContainer from '../styled/StyledImageContainer';
-import wallpapersLighter from '../wallpaperDataDarker';
+import wallpapersLighter from '../wallpaperDataLighter';
 
 export default function ImageContainerLight() {
   return (
-    <StyledImageContainer>
+    <>
       <StyledHeader>
         <img src={Logo} alt="App Logo" />
         <Link to="/">
@@ -19,17 +19,19 @@ export default function ImageContainerLight() {
           </button>
         </Link>
       </StyledHeader>
-      {wallpapersLighter.map(wallpaperLight => {
-        return (
-          <article key={wallpaperLight.id}>
-            <img src={wallpaperLight.image} alt={wallpaperLight.altIMG} />
-            <DownloadLink href={wallpaperLight.image} download={wallpaperLight.image}>
-              <DownloadButton />
-            </DownloadLink>
-          </article>
-        );
-      })}
-    </StyledImageContainer>
+      <StyledImageContainer>
+        {wallpapersLighter.map(wallpaperLight => {
+          return (
+            <article key={wallpaperLight.id}>
+              <img src={wallpaperLight.image} alt={wallpaperLight.altIMG} />
+              <DownloadLink href={wallpaperLight.image} download={wallpaperLight.image}>
+                <DownloadButton />
+              </DownloadLink>
+            </article>
+          );
+        })}
+      </StyledImageContainer>
+    </>
   );
 }
 

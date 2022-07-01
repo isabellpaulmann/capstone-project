@@ -10,7 +10,7 @@ import wallpapersDarker from '../wallpaperDataDarker';
 
 export default function ImageContainerDark() {
   return (
-    <StyledImageContainer>
+    <>
       <StyledHeader>
         <img src={Logo} alt="App Logo" />
         <Link to="/">
@@ -19,17 +19,19 @@ export default function ImageContainerDark() {
           </button>
         </Link>
       </StyledHeader>
-      {wallpapersDarker.map(wallpaperDark => {
-        return (
-          <article key={wallpaperDark.id}>
-            <img src={wallpaperDark.image} alt={wallpaperDark.altIMG} />
-            <DownloadLink href={wallpaperDark.image} download={wallpaperDark.image}>
-              <DownloadButton />
-            </DownloadLink>
-          </article>
-        );
-      })}
-    </StyledImageContainer>
+      <StyledImageContainer>
+        {wallpapersDarker.map(wallpaperDark => {
+          return (
+            <article key={wallpaperDark.id}>
+              <img src={wallpaperDark.image} alt={wallpaperDark.altIMG} />
+              <DownloadLink href={wallpaperDark.image} download={wallpaperDark.image}>
+                <DownloadButton />
+              </DownloadLink>
+            </article>
+          );
+        })}
+      </StyledImageContainer>
+    </>
   );
 }
 

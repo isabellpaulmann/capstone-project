@@ -1,5 +1,5 @@
 import {createGlobalStyle} from 'styled-components';
-
+import 'typeface-jua';
 const styled = {createGlobalStyle};
 
 export default styled.createGlobalStyle`
