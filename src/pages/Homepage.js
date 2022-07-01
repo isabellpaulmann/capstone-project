@@ -34,7 +34,7 @@ const StyledLighterButton = styled.button`
   width: 240px;
   background: #ca8484;
   border: 5px solid #494949;
-  box-shadow: 0px 5px 15px #282544;
+  box-shadow: 0px 5px 15px #222;
   border-radius: 40px;
   font-family: Jua, sans-serif;
   color: white;
@@ -46,7 +46,7 @@ const StyledDarkerButton = styled.button`
   width: 240px;
   background: #324050;
   border: 5px solid #494949;
-  box-shadow: 0px 5px 15px #282544;
+  box-shadow: 0px 5px 15px #222;
   border-radius: 40px;
   font-family: Jua, sans-serif;
   color: white;
