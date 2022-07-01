@@ -4,7 +4,7 @@ const StyledDownloadButton = styled.button`
   width: 110px;
   height: 28px;
   background: #282544;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 15px #282544;
   border-radius: 6px;
   border: none;
   cursor: pointer;

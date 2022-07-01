@@ -39,7 +39,7 @@ export default function ImageContainerLight() {
 
 const StyledColorButton = styled.div`
   button {
-    background-color: #f09c9c;
+    background-color: #cd8282;
   }
 `;
 
