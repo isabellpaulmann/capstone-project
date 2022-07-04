@@ -1,32 +1,42 @@
 const wallpapers = [
   {
-    id: '1',
+    id: 1,
     image: '/wallpaper1.png',
     altIMG: 'colourful wallpaper',
   },
   {
-    id: '2',
+    id: 2,
     image: '/wallpaper2.png',
     altIMG: 'colourful wallpaper',
   },
   {
-    id: '3',
+    id: 3,
     image: '/wallpaper6.png',
     altIMG: 'colourful wallpaper',
   },
   {
-    id: '4',
+    id: 4,
     image: '/wallpaper7.png',
     altIMG: 'colourful wallpaper',
   },
   {
-    id: '5',
+    id: 5,
+    image: '/wallpaper15.png',
+    altIMG: 'colourful wallpaper',
+  },
+  {
+    id: 6,
+    image: '/wallpaper10.png',
+    altIMG: 'colourful wallpaper',
+  },
+  {
+    id: 7,
     image: '/wallpaper9.png',
     altIMG: 'colourful wallpaper',
   },
   {
-    id: '6',
-    image: '/wallpaper10.png',
+    id: 8,
+    image: '/wallpaper16.png',
     altIMG: 'colourful wallpaper',
   },
 ];

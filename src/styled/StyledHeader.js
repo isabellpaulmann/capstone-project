@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.header`
   display: grid;
-  grid-template-columns: 6fr 1fr;
+  grid-template-columns: 1fr 6fr 1fr;
   justify-items: end;
   align-items: center;
   padding-top: 6px;
@@ -13,6 +13,8 @@ const StyledHeader = styled.header`
   width: 100%;
   z-index: 2;
   background-color: #383233;
+  align-items: center;
+  justify-items: center;
 
   button {
     background-color: transparent;

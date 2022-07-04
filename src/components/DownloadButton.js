@@ -40,7 +40,13 @@ export default function DownloadButton() {
         download
         <img src={polygon} alt="download" />
       </StyledDownloadButton>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Modal">
+      <Modal
+        ariaHideApp={false}
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Modal"
+      >
         <img src={downloadtrue} alt="download complete" />
       </Modal>
     </>

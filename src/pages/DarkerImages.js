@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import DownloadButton from '../components/DownloadButton';
+import GoBackButton from '../components/GoBackButton';
 import homebutton from '../images/homebutton.svg';
 import Logo from '../images/logo.svg';
 import StyledHeader from '../styled/StyledHeader';
@@ -12,6 +13,7 @@ export default function ImageContainerDark() {
   return (
     <>
       <StyledHeader>
+        <GoBackButton />
         <img src={Logo} alt="App Logo" />
         <Link to="/">
           <button>
