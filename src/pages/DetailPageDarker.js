@@ -1,26 +1,15 @@
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
 import DownloadButton from '../components/DownloadButton';
-import GoBackButton from '../components/GoBackButton';
-import homebutton from '../images/homebutton.svg';
-import Logo from '../images/logo.svg';
-import StyledHeader from '../styled/StyledHeader';
+import Header from '../components/Header';
 
 export default function DetailPageDarker({wallpapersDark}) {
   const {id} = useParams();
   const thisWallpaper = wallpapersDark.find(wallpaperDark => wallpaperDark.id === Number(id));
   return (
     <>
-      <StyledHeader>
-        <GoBackButton />
-        <img src={Logo} alt="App Logo" />
-        <Link to="/">
-          <button>
-            <img src={homebutton} alt="go to home" />
-          </button>
-        </Link>
-      </StyledHeader>
+      <Header />
       <StyledBigImageContainer>
         <StyledImage src={thisWallpaper.image} alt={thisWallpaper.altIMG} />
         <DownloadLink href={thisWallpaper.image} download={thisWallpaper.image}>
