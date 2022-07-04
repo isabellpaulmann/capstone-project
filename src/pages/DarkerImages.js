@@ -23,7 +23,9 @@ export default function ImageContainerDark() {
         {wallpapersDarker.map(wallpaperDark => {
           return (
             <article key={wallpaperDark.id}>
-              <img src={wallpaperDark.image} alt={wallpaperDark.altIMG} />
+              <Link key={wallpaperDark.id} to={`/images/darker/${wallpaperDark.id}`}>
+                <img src={wallpaperDark.image} alt={wallpaperDark.altIMG} />
+              </Link>
               <DownloadLink href={wallpaperDark.image} download={wallpaperDark.image}>
                 <StyledColorButton>
                   <DownloadButton />
