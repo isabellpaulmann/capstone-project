@@ -16,6 +16,5 @@ export default function GoBackButton() {
 }
 
 const StyledGoBackButton = styled.button`
-  img {
-  }
+  height: 58px;
 `;

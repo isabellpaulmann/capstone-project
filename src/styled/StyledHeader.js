@@ -13,7 +13,6 @@ const StyledHeader = styled.header`
   width: 100%;
   z-index: 2;
   background-color: #383233;
-  align-items: center;
   justify-items: center;
 
   button {
