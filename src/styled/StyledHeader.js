@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const StyledHeader = styled.header`
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
-  justify-items: end;
   align-items: center;
   padding-top: 6px;
   padding-bottom: 5px;
