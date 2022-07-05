@@ -2,32 +2,25 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import DownloadButton from '../components/DownloadButton';
-import homebutton from '../images/homebutton.svg';
-import Logo from '../images/logo.svg';
-import StyledHeader from '../styled/StyledHeader';
+import Header from '../components/Header';
 import StyledImageContainer from '../styled/StyledImageContainer';
 import wallpapersDarker from '../wallpaperDataDarker';
 
 export default function ImageContainerDark() {
   return (
     <>
-      <StyledHeader>
-        <img src={Logo} alt="App Logo" />
-        <Link to="/">
-          <button>
-            <img src={homebutton} alt="go to home" />
-          </button>
-        </Link>
-      </StyledHeader>
+      <Header />
       <StyledImageContainer>
         {wallpapersDarker.map(wallpaperDark => {
           return (
             <article key={wallpaperDark.id}>
-              <img src={wallpaperDark.image} alt={wallpaperDark.altIMG} />
+              <Link to={`/images/darker/${wallpaperDark.id}`}>
+                <img src={wallpaperDark.image} alt={wallpaperDark.altIMG} />
+              </Link>
               <DownloadLink href={wallpaperDark.image} download={wallpaperDark.image}>
-                <StyledColorButton>
+                <StyledColorButtonContainer>
                   <DownloadButton />
-                </StyledColorButton>
+                </StyledColorButtonContainer>
               </DownloadLink>
             </article>
           );
@@ -37,7 +30,7 @@ export default function ImageContainerDark() {
   );
 }
 
-const StyledColorButton = styled.div`
+const StyledColorButtonContainer = styled.div`
   button {
     background-color: #495b70;
   }
