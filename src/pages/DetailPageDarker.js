@@ -1,8 +1,11 @@
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
+import AddStickerButton from '../components/AddStickerButton';
 import DownloadButton from '../components/DownloadButton';
 import Header from '../components/Header';
+import deletesticker from '../images/deletesticker.svg';
+import StyledFooter from '../styled/StyledFooter';
 
 export default function DetailPageDarker({wallpapersDark}) {
   const {id} = useParams();
@@ -12,19 +15,33 @@ export default function DetailPageDarker({wallpapersDark}) {
       <Header />
       <StyledBigImageContainer>
         <StyledImage src={thisWallpaper.image} alt={thisWallpaper.altIMG} />
+      </StyledBigImageContainer>
+      <StyledFooter>
+        <AddStickerButton />
         <DownloadLink href={thisWallpaper.image} download={thisWallpaper.image}>
           <StyledColorButton>
             <DownloadButton />
           </StyledColorButton>
         </DownloadLink>
-      </StyledBigImageContainer>
+        <img src={deletesticker} alt="delete sticker" />
+      </StyledFooter>
     </>
   );
 }
 
 const StyledImage = styled.img`
-  height: 500px;
+  height: 73vh;
   border-radius: 10px;
+
+  @media (min-width: 390px) {
+    height: 78vh;
+  }
+  @media (min-width: 768px) {
+    height: 83vh;
+  }
+  @media (min-width: 912px) {
+    height: 86vh;
+  }
 `;
 
 const StyledColorButton = styled.div`
@@ -45,7 +62,6 @@ const DownloadLink = styled.a`
 
 const StyledBigImageContainer = styled.div`
   display: grid;
-  grid-template-rows: 7fr 1fr;
   justify-content: center;
   align-content: center;
   align-items: center;
