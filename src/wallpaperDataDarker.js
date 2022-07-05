@@ -16,17 +16,17 @@ const wallpapersDark = [
   },
   {
     id: 4,
-    image: '/wallpaper8.png',
-    altIMG: 'colourful wallpaper',
-  },
-  {
-    id: 5,
     image: '/wallpaper14.png',
     altIMG: 'colourful wallpaper',
   },
   {
-    id: 6,
+    id: 5,
     image: '/wallpaper12.png',
+    altIMG: 'colourful wallpaper',
+  },
+  {
+    id: 6,
+    image: '/wallpaper8.png',
     altIMG: 'colourful wallpaper',
   },
   {

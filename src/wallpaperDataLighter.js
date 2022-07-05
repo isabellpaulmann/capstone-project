@@ -21,7 +21,7 @@ const wallpapers = [
   },
   {
     id: 5,
-    image: '/wallpaper15.png',
+    image: '/wallpaper9.png',
     altIMG: 'colourful wallpaper',
   },
   {
@@ -31,7 +31,7 @@ const wallpapers = [
   },
   {
     id: 7,
-    image: '/wallpaper9.png',
+    image: '/wallpaper15.png',
     altIMG: 'colourful wallpaper',
   },
   {
