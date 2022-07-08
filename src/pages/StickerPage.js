@@ -29,4 +29,8 @@ const StyledStickerContainer = styled.section`
     width: 100%;
     height: auto;
   }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;

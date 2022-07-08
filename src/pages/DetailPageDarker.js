@@ -17,7 +17,7 @@ import StyledFooter from '../styled/StyledFooter';
 export default function DetailPageDarker({wallpapersDark}) {
   const {id} = useParams();
   const thisWallpaper = wallpapersDark.find(wallpaperDark => wallpaperDark.id === Number(id));
-  const defaultImageStyle = {brightness: 0, contrast: 0, saturation: 0};
+  const defaultImageStyle = {brightness: 1, contrast: 1, saturate: 1};
   const [imageStyle, setImageStyle] = useState(defaultImageStyle);
 
   return (
@@ -25,22 +25,22 @@ export default function DetailPageDarker({wallpapersDark}) {
       <Header />
       <StyledBigImageContainer>
         <ButtonBar>
-          <button onClick={() => setImageStyle({...imageStyle, brightness: imageStyle.brightness + 1})}>
+          <button onClick={() => setImageStyle({...imageStyle, brightness: imageStyle.brightness + 0.1})}>
             <img src={brightnessplus} alt="higher brightness" />
           </button>
-          <button onClick={() => setImageStyle({...imageStyle, brightness: imageStyle.brightness - 1})}>
+          <button onClick={() => setImageStyle({...imageStyle, brightness: imageStyle.brightness - 0.1})}>
             <img src={brightnessminus} alt="lower brightness" />
           </button>
-          <button onClick={() => setImageStyle({...imageStyle, contrast: imageStyle.contrast + 1})}>
+          <button onClick={() => setImageStyle({...imageStyle, contrast: imageStyle.contrast + 0.1})}>
             <img src={contrastplus} alt="higher contrast" />
           </button>
-          <button onClick={() => setImageStyle({...imageStyle, contrast: imageStyle.contrast - 1})}>
+          <button onClick={() => setImageStyle({...imageStyle, contrast: imageStyle.contrast - 0.1})}>
             <img src={contrastminus} alt="lower contrast" />
           </button>
-          <button onClick={() => setImageStyle({...imageStyle, saturation: imageStyle.saturation + 1})}>
+          <button onClick={() => setImageStyle({...imageStyle, saturate: imageStyle.saturate + 0.1})}>
             <img src={saturationplus} alt="higher saturation" />
           </button>
-          <button onClick={() => setImageStyle({...imageStyle, saturation: imageStyle.saturation - 1})}>
+          <button onClick={() => setImageStyle({...imageStyle, saturate: imageStyle.saturate - 0.1})}>
             <img src={saturationminus} alt="lower saturation" />
           </button>
         </ButtonBar>
@@ -48,9 +48,10 @@ export default function DetailPageDarker({wallpapersDark}) {
           src={thisWallpaper.image}
           alt={thisWallpaper.altIMG}
           style={{
-            filter: `brightness(${imageStyle.brightness}) contrast(${imageStyle.contrast}) saturation(${imageStyle.saturation})`,
+            filter: `brightness(${imageStyle.brightness}) contrast(${imageStyle.contrast}) saturate(${imageStyle.saturate})`,
           }}
         />
+        <StyledPlaceholder />
       </StyledBigImageContainer>
       <StyledFooter>
         <AddStickerButton />
@@ -64,6 +65,11 @@ export default function DetailPageDarker({wallpapersDark}) {
     </>
   );
 }
+
+const StyledPlaceholder = styled.div`
+  background-color: transparent;
+`;
+
 const ButtonBar = styled.div`
   display: flex;
   flex-direction: column;
@@ -75,7 +81,6 @@ const ButtonBar = styled.div`
     padding: 0;
     margin-left: -3px;
     margin-right: -3px;
-    border-radius: 999px;
   }
 `;
 
@@ -112,7 +117,7 @@ const DownloadLink = styled.a`
 
 const StyledBigImageContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-content: center;
   align-items: center;
