@@ -9,7 +9,6 @@ import brightnessminus from '../images/brightnessminus.svg';
 import brightnessplus from '../images/brightnessplus.svg';
 import contrastminus from '../images/contrastminus.svg';
 import contrastplus from '../images/contrastplus.svg';
-import deletesticker from '../images/deletesticker.svg';
 import saturationminus from '../images/saturationminus.svg';
 import saturationplus from '../images/saturationplus.svg';
 import StyledFooter from '../styled/StyledFooter';
@@ -51,7 +50,6 @@ export default function DetailPageLighter({wallpapersLight}) {
             filter: `brightness(${imageStyle.brightness}) contrast(${imageStyle.contrast}) saturate(${imageStyle.saturate})`,
           }}
         />
-        <StyledPlaceholder />
       </StyledBigImageContainer>
       <StyledFooter>
         <AddStickerButton />
@@ -60,15 +58,10 @@ export default function DetailPageLighter({wallpapersLight}) {
             <DownloadButton />
           </StyledColorButtonContainer>
         </DownloadLink>
-        <img src={deletesticker} alt="delete sticker" />
       </StyledFooter>
     </>
   );
 }
-
-const StyledPlaceholder = styled.div`
-  background-color: transparent;
-`;
 
 const ButtonBar = styled.div`
   display: flex;

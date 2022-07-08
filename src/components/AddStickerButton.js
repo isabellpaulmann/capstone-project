@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom';
 
-import addSticker from '../images/addsticker.svg';
+import addstickers from '../images/addstickers.svg';
 
 export default function AddStickerButton() {
   return (
     <>
       <Link to="/sticker">
-        <img src={addSticker} alt="add a sticker" />
+        <img src={addstickers} alt="add a sticker" />
       </Link>
     </>
   );
