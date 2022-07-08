@@ -44,7 +44,13 @@ export default function DetailPageDarker({wallpapersDark}) {
             <img src={saturationminus} alt="lower saturation" />
           </button>
         </ButtonBar>
-        <StyledImage src={thisWallpaper.image} alt={thisWallpaper.altIMG} style={imageStyle} />
+        <StyledImage
+          src={thisWallpaper.image}
+          alt={thisWallpaper.altIMG}
+          style={{
+            filter: `brightness(${imageStyle.brightness}) contrast(${imageStyle.contrast}) saturation(${imageStyle.saturation})`,
+          }}
+        />
       </StyledBigImageContainer>
       <StyledFooter>
         <AddStickerButton />
@@ -66,6 +72,10 @@ const ButtonBar = styled.div`
   button {
     border: none;
     background-color: transparent;
+    padding: 0;
+    margin-left: -3px;
+    margin-right: -3px;
+    border-radius: 999px;
   }
 `;
 
@@ -101,8 +111,8 @@ const DownloadLink = styled.a`
 `;
 
 const StyledBigImageContainer = styled.div`
-  display: flex;
-
+  display: grid;
+  grid-template-columns: 1fr 5fr;
   justify-content: center;
   align-content: center;
   align-items: center;
