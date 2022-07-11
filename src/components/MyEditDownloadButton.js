@@ -34,7 +34,7 @@ export default function MyEditDownloadButton() {
 
     DomToImage.toPng(node).then(function (dataURL) {
       var link = document.createElement('a');
-      link.download = 'my-image-name.png';
+      link.download = 'wallpaper.png';
       link.href = dataURL;
       link.click();
     });
