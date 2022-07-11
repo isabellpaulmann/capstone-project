@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import AddStickerButton from '../components/AddStickerButton';
 import DownloadButton from '../components/DownloadButton';
 import Header from '../components/Header';
+import MyEditDownloadButton from '../components/MyEditDownloadButton';
 import brightnessminus from '../images/brightnessminus.svg';
 import brightnessplus from '../images/brightnessplus.svg';
 import contrastminus from '../images/contrastminus.svg';
@@ -49,7 +50,9 @@ export default function DetailPageDarker({wallpapersDark}) {
           style={{
             filter: `brightness(${imageStyle.brightness}) contrast(${imageStyle.contrast}) saturate(${imageStyle.saturate})`,
           }}
+          id="editedPicture"
         />
+        <MyEditDownloadButton />
       </StyledBigImageContainer>
       <StyledFooter>
         <AddStickerButton />
@@ -67,19 +70,20 @@ const ButtonBar = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-left: -3px;
 
   button {
     border: none;
     background-color: transparent;
     padding: 0;
-    margin-left: -3px;
-    margin-right: -3px;
   }
 `;
 
 const StyledImage = styled.img`
   height: 73vh;
   border-radius: 10px;
+  margin-left: -3px;
+  margin-right: -3px;
 
   @media (min-width: 390px) {
     height: 78vh;
