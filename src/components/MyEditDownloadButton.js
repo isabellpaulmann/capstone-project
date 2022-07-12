@@ -30,12 +30,12 @@ export default function MyEditDownloadButton() {
     setTimeout(() => {
       setModalIsOpen(false);
     }, 1500);
-    const node = document.getElementById('editedPicture');
+    const picture = document.getElementById('editedPicture');
 
-    DomToImage.toPng(node).then(function (dataURL) {
-      var link = document.createElement('a');
+    DomToImage.toPng(picture).then(function (data) {
+      const link = document.createElement('a');
       link.download = 'wallpaper.png';
-      link.href = dataURL;
+      link.href = data;
       link.click();
     });
   }
