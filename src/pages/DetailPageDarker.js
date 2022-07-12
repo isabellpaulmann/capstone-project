@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
+import {keyframes} from 'styled-components';
 
 import AddStickerButton from '../components/AddStickerButton';
 import DownloadButton from '../components/DownloadButton';
@@ -65,7 +66,11 @@ export default function DetailPageDarker({wallpapersDark}) {
     </>
   );
 }
-
+const fadeIn = keyframes`
+from {opacity:0
+}
+to { opacity:1; }
+`;
 const ButtonBar = styled.div`
   display: flex;
   flex-direction: column;
@@ -118,4 +123,5 @@ const StyledBigImageContainer = styled.div`
   justify-content: center;
   align-content: center;
   align-items: center;
+  animation: ${fadeIn} 2s;
 `;

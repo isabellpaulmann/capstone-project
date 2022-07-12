@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import {keyframes} from 'styled-components';
 
 import Logo from '../images/logo.svg';
 
@@ -20,6 +21,29 @@ export default function Homepage() {
     </>
   );
 }
+const glowingLight = keyframes`
+    from {
+      box-shadow: 0 0 10px -10px #ca8484;
+    }
+    to {
+      box-shadow: 0 0 30px 10px #494949;
+    }
+   
+  `;
+const glowingDark = keyframes`
+  from {
+    box-shadow: 0 0 14px -5px black;
+  }
+  to {
+    box-shadow: 0 0 40px 5px #292929;
+  }
+ 
+`;
+const easeIn = keyframes`
+from {opacity:0
+}
+to { opacity:1; }
+`;
 
 const StyledSection = styled.section`
   display: grid;
@@ -39,6 +63,9 @@ const StyledLighterButton = styled.button`
   font-family: Jua, sans-serif;
   color: white;
   font-size: 2rem;
+  animation: ${glowingLight} 3s 0s infinite alternate, ${easeIn} 5s;
+  margin-bottom: 20px;
+  margin-top: -20px; ;
 `;
 
 const StyledDarkerButton = styled.button`
@@ -51,4 +78,5 @@ const StyledDarkerButton = styled.button`
   font-family: Jua, sans-serif;
   color: white;
   font-size: 2rem;
+  animation: ${glowingDark} 3s 0s infinite alternate, ${easeIn} 5s;
 `;
