@@ -16,8 +16,8 @@ const StyledFooter = styled.div`
   background-color: #383233;
   position: absolute;
   bottom: 0;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   animation: ${fadeIn} 2s;
 `;
 export default StyledFooter;

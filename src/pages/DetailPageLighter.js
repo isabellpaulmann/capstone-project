@@ -3,7 +3,6 @@ import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import {keyframes} from 'styled-components';
 
-import AddStickerButton from '../components/AddStickerButton';
 import DownloadButton from '../components/DownloadButton';
 import Header from '../components/Header';
 import MyEditDownloadButton from '../components/MyEditDownloadButton';
@@ -56,7 +55,6 @@ export default function DetailPageLighter({wallpapersLight}) {
         <MyEditDownloadButton />
       </StyledBigImageContainer>
       <StyledFooter>
-        <AddStickerButton />
         <DownloadLink href={thisWallpaper.image} download={thisWallpaper.image}>
           <StyledColorButtonContainer>
             <DownloadButton />
