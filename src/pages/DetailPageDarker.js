@@ -30,7 +30,7 @@ export default function DetailPageDarker({wallpapersDark}) {
     brushRadius: 5,
   };
   const [state, setState] = useState(defaultdraw);
-  const [disable, setDisable] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   return (
     <StyledMain>
@@ -57,7 +57,7 @@ export default function DetailPageDarker({wallpapersDark}) {
           </button>
         </ButtonBar>
         <CanvasDraw
-          disabled={disable}
+          disabled={isDisabled}
           hideInterface
           hideGrid
           brushColor={color}
@@ -74,7 +74,7 @@ export default function DetailPageDarker({wallpapersDark}) {
           }}
         ></CanvasDraw>
         <ButtonBar>
-          <button>
+          <button onClick={() => setIsDisabled(!isDisabled)}>
             <img src={draw} alt="start drawing" />
           </button>
           <StyledInput
@@ -86,7 +86,7 @@ export default function DetailPageDarker({wallpapersDark}) {
           <button onClick={() => setVisible(!visible)}>
             <img src={colors} alt="color palette" />
           </button>
-          <button onClick={() => setDisable(true)}>
+          <button>
             <img src={deleteAll} alt="delete all drawings" />
           </button>
         </ButtonBar>
