@@ -1,12 +1,10 @@
-import DomToImage from 'dom-to-image';
 import {useState} from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
 import downloadtrue from '../images/downloadtrue.svg';
-import saveEdit from '../images/myedit.svg';
 
-export default function MyEditDownloadButton() {
+export default function MyEditDownloadButton({image}) {
   const customStyles = {
     content: {
       top: '50%',
@@ -30,14 +28,13 @@ export default function MyEditDownloadButton() {
     setTimeout(() => {
       setModalIsOpen(false);
     }, 1500);
-    const picture = document.getElementById('editedPicture');
 
-    DomToImage.toPng(picture).then(function (data) {
-      const link = document.createElement('a');
-      link.download = 'wallpaper.png';
-      link.href = data;
-      link.click();
-    });
+    console.log(image);
+
+    const link = document.createElement('a');
+    link.download = 'wallpaper.png';
+    link.href = image;
+    link.click();
   }
 
   function closeModal() {

@@ -27,6 +27,7 @@ export default function DetailPageDarker({wallpapersDark}) {
   const [color, setColor] = useState('#aabbcc');
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  const [canvas, setCanvas] = useState(false);
 
   const defaultdraw = {
     brushRadius: 5,
@@ -37,7 +38,7 @@ export default function DetailPageDarker({wallpapersDark}) {
     setIsDisabled(!isDisabled);
     setVisible2(!visible2);
   };
-
+  console.log(typeof thisWallpaper.image);
   return (
     <StyledMain>
       <Header />
@@ -63,6 +64,9 @@ export default function DetailPageDarker({wallpapersDark}) {
           </button>
         </ButtonBar>
         <CanvasDraw
+          ref={canvasDraw => {
+            setCanvas(canvasDraw);
+          }}
           disabled={isDisabled}
           hideInterface
           hideGrid
@@ -97,7 +101,7 @@ export default function DetailPageDarker({wallpapersDark}) {
             </button>
           )}
           {visible2 && (
-            <button>
+            <button onClick={() => canvas.eraseAll()}>
               <img src={deleteAll} alt="delete all drawings" />
             </button>
           )}
@@ -114,7 +118,7 @@ export default function DetailPageDarker({wallpapersDark}) {
             <DownloadButton2 />
           </StyledColorButton>
         </DownloadLink>
-        <MyEditDownloadButton />
+        <MyEditDownloadButton image={canvas ? canvas.getDataURL('png', true) : ''} />
       </StyledFooter>
     </StyledMain>
   );
