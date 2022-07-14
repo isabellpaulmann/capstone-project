@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import {keyframes} from 'styled-components';
 
-import DownloadButton from '../components/DownloadButton';
+import DownloadButton2 from '../components/DownloadButton2';
 import Header from '../components/Header';
 import MyEditDownloadButton from '../components/MyEditDownloadButton';
 import brightnessminus from '../images/brightnessminus.svg';
@@ -26,11 +26,17 @@ export default function DetailPageDarker({wallpapersDark}) {
   const [imageStyle, setImageStyle] = useState(defaultImageStyle);
   const [color, setColor] = useState('#aabbcc');
   const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+
   const defaultdraw = {
     brushRadius: 5,
   };
   const [state, setState] = useState(defaultdraw);
   const [isDisabled, setIsDisabled] = useState(true);
+  const startDrawing = () => {
+    setIsDisabled(!isDisabled);
+    setVisible2(!visible2);
+  };
 
   return (
     <StyledMain>
@@ -64,8 +70,8 @@ export default function DetailPageDarker({wallpapersDark}) {
           enablePanAndZoom
           clampLinesToDocument
           imgSrc={thisWallpaper.image}
-          canvasHeight={497}
-          canvasWidth={230}
+          canvasHeight={510}
+          canvasWidth={235}
           brushRadius={state.brushRadius}
           id="editedPicture"
           style={{
@@ -74,21 +80,27 @@ export default function DetailPageDarker({wallpapersDark}) {
           }}
         ></CanvasDraw>
         <ButtonBar>
-          <button onClick={() => setIsDisabled(!isDisabled)}>
+          <button onClick={startDrawing}>
             <img src={draw} alt="start drawing" />
           </button>
-          <StyledInput
-            type="number"
-            value={state.brushRadius}
-            onChange={e => setState({brushRadius: parseInt(e.target.value, 10)})}
-            placeholder="size"
-          />
-          <button onClick={() => setVisible(!visible)}>
-            <img src={colors} alt="color palette" />
-          </button>
-          <button>
-            <img src={deleteAll} alt="delete all drawings" />
-          </button>
+          {visible2 && (
+            <StyledInput
+              type="number"
+              value={state.brushRadius}
+              onChange={e => setState({brushRadius: parseInt(e.target.value, 10)})}
+              placeholder="size"
+            />
+          )}
+          {visible2 && (
+            <button onClick={() => setVisible(!visible)}>
+              <img src={colors} alt="color palette" />
+            </button>
+          )}
+          {visible2 && (
+            <button>
+              <img src={deleteAll} alt="delete all drawings" />
+            </button>
+          )}
         </ButtonBar>
         {visible && (
           <StyledColorPicker className="small">
@@ -99,7 +111,7 @@ export default function DetailPageDarker({wallpapersDark}) {
       <StyledFooter>
         <DownloadLink href={thisWallpaper.image} download={thisWallpaper.image}>
           <StyledColorButton>
-            <DownloadButton />
+            <DownloadButton2 />
           </StyledColorButton>
         </DownloadLink>
         <MyEditDownloadButton />
@@ -107,6 +119,7 @@ export default function DetailPageDarker({wallpapersDark}) {
     </StyledMain>
   );
 }
+
 const StyledInput = styled.input`
   width: 44px;
   height: 33px;
@@ -176,7 +189,10 @@ const StyledBigImageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
-  align-content: center;
   align-items: center;
   animation: ${fadeIn} 2s;
+
+  @media (min-width: 390px) {
+    margin-top: 20%;
+  }
 `;

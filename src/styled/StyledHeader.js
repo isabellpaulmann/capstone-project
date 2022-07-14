@@ -11,9 +11,8 @@ const StyledHeader = styled.header`
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
   align-items: center;
-  padding-top: 6px;
-  padding-bottom: 5px;
-  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 1px;
   position: sticky;
   top: 0;
   width: 100%;
