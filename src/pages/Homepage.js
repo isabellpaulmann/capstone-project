@@ -51,6 +51,7 @@ const StyledSection = styled.section`
   align-items: center;
   grid-template-rows: 3fr 1fr 1fr 1fr;
   grid-gap: 25px;
+  overflow: hidden;
 `;
 
 const StyledLighterButton = styled.button`

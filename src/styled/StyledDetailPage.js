@@ -18,18 +18,6 @@ export const StyledMain = styled.div`
   overflow: hidden;
 `;
 
-export const StyledColorPicker = styled.div`
-  position: absolute;
-  left: 50vw;
-
-  &.small .react-colorful {
-    width: 100px;
-    height: 80px;
-  }
-  &.small .react-colorful__hue {
-    height: 10px;
-  }
-`;
 export const fadeIn = keyframes`
 from {opacity:0
 }

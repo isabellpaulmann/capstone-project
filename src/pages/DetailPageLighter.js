@@ -1,5 +1,4 @@
 import {useState, useRef, useEffect} from 'react';
-import {HexColorPicker} from 'react-colorful';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -16,7 +15,7 @@ import deleteAll from '../images/deletedrawing.svg';
 import draw from '../images/drawopen.svg';
 import saturationminus from '../images/saturationminus.svg';
 import saturationplus from '../images/saturationplus.svg';
-import {StyledInput, StyledMain, StyledColorPicker, fadeIn, ButtonBar, DownloadLink} from '../styled/StyledDetailPage';
+import {StyledInput, StyledMain, fadeIn, ButtonBar, DownloadLink} from '../styled/StyledDetailPage';
 import StyledFooter from '../styled/StyledFooter';
 
 export default function DetailPageLighter({wallpapersLight}) {
@@ -45,8 +44,14 @@ export default function DetailPageLighter({wallpapersLight}) {
     if (canvasRef.current) {
       canvasRef.current.setFilter(filter);
     }
-    console.log(filter);
   }, [imageStyle]);
+  function handleChangeLineWidth(event) {
+    const parsedValue = Number.parseInt(event.target.value);
+    setLineWidth(parsedValue);
+    if (canvasRef.current) {
+      canvasRef.current.set('lineWidth', parsedValue);
+    }
+  }
 
   return (
     <StyledMain>
@@ -88,12 +93,7 @@ export default function DetailPageLighter({wallpapersLight}) {
             <img src={draw} alt="start drawing" />
           </button>
           {visible2 && (
-            <StyledInput
-              type="number"
-              value={lineWidth}
-              onChange={e => setLineWidth(Number.parseFloat(e.target.value))}
-              placeholder="size"
-            />
+            <StyledInput type="number" value={lineWidth} onChange={handleChangeLineWidth} placeholder="size" />
           )}
           {visible2 && (
             <button onClick={() => setVisible(!visible)}>
@@ -113,9 +113,16 @@ export default function DetailPageLighter({wallpapersLight}) {
           )}
         </ButtonBar>
         {visible && (
-          <StyledColorPicker className="small">
-            <HexColorPicker color={color} onChange={setColor} />
-          </StyledColorPicker>
+          <StyledInputColor
+            type="color"
+            color={color}
+            onChange={event => {
+              setColor(event.target.value);
+              if (canvasRef.current) {
+                canvasRef.current.set('color', event.target.value);
+              }
+            }}
+          />
         )}
       </StyledBigImageContainer>
       <StyledFooter>
@@ -137,6 +144,19 @@ export default function DetailPageLighter({wallpapersLight}) {
     </StyledMain>
   );
 }
+
+const StyledInputColor = styled.input.attrs({type: 'color'})`
+  background: none;
+  right: 22vw;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-color: transparent;
+  border: none;
+  box-shadow: 0px;
+`;
 
 const StyledBigImageContainer = styled.div`
   display: grid;
