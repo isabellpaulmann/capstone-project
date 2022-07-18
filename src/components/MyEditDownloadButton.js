@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import downloadtrue from '../images/downloadtrue.svg';
 
-export default function MyEditDownloadButton({image}) {
+export default function MyEditDownloadButton() {
   const customStyles = {
     content: {
       top: '50%',
@@ -28,13 +28,6 @@ export default function MyEditDownloadButton({image}) {
     setTimeout(() => {
       setModalIsOpen(false);
     }, 1500);
-
-    console.log(image);
-
-    const link = document.createElement('a');
-    link.download = 'wallpaper.png';
-    link.href = image;
-    link.click();
   }
 
   function closeModal() {
@@ -42,7 +35,9 @@ export default function MyEditDownloadButton({image}) {
   }
   return (
     <>
-      <StyledMyEditDownloadButton onClick={openModal}>download edited picture</StyledMyEditDownloadButton>
+      <StyledMyEditDownloadButton download onClick={openModal}>
+        download edited picture
+      </StyledMyEditDownloadButton>
       <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}

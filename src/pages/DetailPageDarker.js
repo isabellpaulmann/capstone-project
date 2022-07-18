@@ -1,10 +1,9 @@
-import {useState} from 'react';
-import CanvasDraw from 'react-canvas-draw';
+import {useState, useRef, useEffect} from 'react';
 import {HexColorPicker} from 'react-colorful';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
-import {keyframes} from 'styled-components';
 
+import Canvas from '../components/Canvas';
 import DownloadButton2 from '../components/DownloadButton2';
 import Header from '../components/Header';
 import MyEditDownloadButton from '../components/MyEditDownloadButton';
@@ -17,6 +16,15 @@ import deleteAll from '../images/deletedrawing.svg';
 import draw from '../images/drawopen.svg';
 import saturationminus from '../images/saturationminus.svg';
 import saturationplus from '../images/saturationplus.svg';
+import {
+  StyledInput,
+  StyledMain,
+  StyledColorPicker,
+  fadeIn,
+  ButtonBar,
+  StyledColorButton,
+  DownloadLink,
+} from '../styled/StyledDetailPage';
 import StyledFooter from '../styled/StyledFooter';
 
 export default function DetailPageDarker({wallpapersDark}) {
@@ -27,18 +35,27 @@ export default function DetailPageDarker({wallpapersDark}) {
   const [color, setColor] = useState('#aabbcc');
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
-  const [canvas, setCanvas] = useState(false);
+  const [lineWidth, setLineWidth] = useState(5);
+  const canvasRef = useRef();
 
-  const defaultdraw = {
-    brushRadius: 5,
-  };
-  const [state, setState] = useState(defaultdraw);
-  const [isDisabled, setIsDisabled] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
   const startDrawing = () => {
     setIsDisabled(!isDisabled);
     setVisible2(!visible2);
+    canvasRef.current.set('isActive', !isDisabled);
+    canvasRef.current.clearFilter();
   };
-  console.log(typeof thisWallpaper.image);
+
+  useEffect(() => {
+    const filter = `brightness(${imageStyle.brightness * 100}%) contrast(${imageStyle.contrast}) saturate(${
+      imageStyle.saturate * 100
+    }%)`;
+    if (canvasRef.current) {
+      canvasRef.current.setFilter(filter);
+    }
+    console.log(filter);
+  }, [imageStyle]);
+
   return (
     <StyledMain>
       <Header />
@@ -63,26 +80,17 @@ export default function DetailPageDarker({wallpapersDark}) {
             <img src={saturationminus} alt="lower saturation" />
           </button>
         </ButtonBar>
-        <CanvasDraw
-          ref={canvasDraw => {
-            setCanvas(canvasDraw);
-          }}
+        <Canvas
+          id="canvas"
+          color={color}
+          lineWidth={lineWidth}
+          ref={canvasRef}
           disabled={isDisabled}
-          hideInterface
-          hideGrid
-          brushColor={color}
-          enablePanAndZoom
-          clampLinesToDocument
-          imgSrc={thisWallpaper.image}
-          canvasHeight={510}
-          canvasWidth={235}
-          brushRadius={state.brushRadius}
-          id="editedPicture"
+          image={thisWallpaper.image}
           style={{
-            backgroundColor: '#333',
             filter: `brightness(${imageStyle.brightness}) contrast(${imageStyle.contrast}) saturate(${imageStyle.saturate})`,
           }}
-        ></CanvasDraw>
+        ></Canvas>
         <ButtonBar>
           <button onClick={startDrawing}>
             <img src={draw} alt="start drawing" />
@@ -90,8 +98,8 @@ export default function DetailPageDarker({wallpapersDark}) {
           {visible2 && (
             <StyledInput
               type="number"
-              value={state.brushRadius}
-              onChange={e => setState({brushRadius: parseInt(e.target.value, 10)})}
+              value={lineWidth}
+              onChange={e => setLineWidth(Number.parseFloat(e.target.value))}
               placeholder="size"
             />
           )}
@@ -101,7 +109,13 @@ export default function DetailPageDarker({wallpapersDark}) {
             </button>
           )}
           {visible2 && (
-            <button onClick={() => canvas.eraseAll()}>
+            <button
+              onClick={() => {
+                if (canvasRef.current) {
+                  canvasRef.current.clear();
+                }
+              }}
+            >
               <img src={deleteAll} alt="delete all drawings" />
             </button>
           )}
@@ -118,85 +132,24 @@ export default function DetailPageDarker({wallpapersDark}) {
             <DownloadButton2 />
           </StyledColorButton>
         </DownloadLink>
-        <MyEditDownloadButton image={canvas ? canvas.getDataURL('png', true) : ''} />
+        <div
+          onClick={() => {
+            if (canvasRef.current) {
+              canvasRef.current.download();
+            }
+          }}
+        >
+          <MyEditDownloadButton />
+        </div>
       </StyledFooter>
     </StyledMain>
   );
 }
 
-const StyledInput = styled.input`
-  width: 44px;
-  height: 33px;
-  padding: 5px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  border-radius: 20px;
-  border: none;
-  font-family: Jua, sans-serif;
-  text-align: center;
-  box-shadow: 1px 1px 15px #222;
-`;
-
-const StyledMain = styled.div`
-  overflow: hidden;
-`;
-
-const StyledColorPicker = styled.div`
-  position: absolute;
-  left: 50vw;
-
-  &.small .react-colorful {
-    width: 100px;
-    height: 80px;
-  }
-  &.small .react-colorful__hue {
-    height: 10px;
-  }
-`;
-const fadeIn = keyframes`
-from {opacity:0
-}
-to { opacity:1; }
-`;
-const ButtonBar = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-left: -3px;
-  margin-right: -3px;
-
-  button {
-    border: none;
-    background-color: transparent;
-    padding: 0;
-  }
-`;
-
-const StyledColorButton = styled.div`
-  button {
-    background-color: #495b70;
-    img {
-      margin-top: -5px;
-      width: 80px;
-    }
-  }
-`;
-
-const DownloadLink = styled.a`
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-`;
-
 const StyledBigImageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   animation: ${fadeIn} 2s;
-
-  @media (min-width: 390px) {
-    margin-top: 20%;
-  }
 `;

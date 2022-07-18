@@ -1,17 +1,22 @@
-import {useState} from 'react';
+import {useState, useRef} from 'react';
+import {HexColorPicker} from 'react-colorful';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
-import {keyframes} from 'styled-components';
 
-import DownloadButton from '../components/DownloadButton';
+import Canvas from '../components/Canvas';
+import DownloadButton2 from '../components/DownloadButton2';
 import Header from '../components/Header';
 import MyEditDownloadButton from '../components/MyEditDownloadButton';
 import brightnessminus from '../images/brightnessminus.svg';
 import brightnessplus from '../images/brightnessplus.svg';
+import colors from '../images/colors.svg';
 import contrastminus from '../images/contrastminus.svg';
 import contrastplus from '../images/contrastplus.svg';
+import deleteAll from '../images/deletedrawing.svg';
+import draw from '../images/drawopen.svg';
 import saturationminus from '../images/saturationminus.svg';
 import saturationplus from '../images/saturationplus.svg';
+import {StyledInput, StyledMain, StyledColorPicker, fadeIn, ButtonBar, DownloadLink} from '../styled/StyledDetailPage';
 import StyledFooter from '../styled/StyledFooter';
 
 export default function DetailPageLighter({wallpapersLight}) {
@@ -19,9 +24,20 @@ export default function DetailPageLighter({wallpapersLight}) {
   const thisWallpaper = wallpapersLight.find(wallpaperLight => wallpaperLight.id === Number(id));
   const defaultImageStyle = {brightness: 1, contrast: 1, saturate: 1};
   const [imageStyle, setImageStyle] = useState(defaultImageStyle);
+  const [color, setColor] = useState('#aabbcc');
+  const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+  const [lineWidth, setLineWidth] = useState(5);
+  const canvasRef = useRef();
+
+  const [isDisabled, setIsDisabled] = useState(true);
+  const startDrawing = () => {
+    setIsDisabled(!isDisabled);
+    setVisible2(!visible2);
+  };
 
   return (
-    <>
+    <StyledMain>
       <Header />
       <StyledBigImageContainer>
         <ButtonBar>
@@ -44,61 +60,79 @@ export default function DetailPageLighter({wallpapersLight}) {
             <img src={saturationminus} alt="lower saturation" />
           </button>
         </ButtonBar>
-        <StyledImage
-          src={thisWallpaper.image}
-          alt={thisWallpaper.altIMG}
+        <Canvas
+          color={color}
+          lineWidth={lineWidth}
+          ref={canvasRef}
+          disabled={isDisabled}
+          image={thisWallpaper.image}
           style={{
             filter: `brightness(${imageStyle.brightness}) contrast(${imageStyle.contrast}) saturate(${imageStyle.saturate})`,
           }}
-          id="editedPicture"
-        />
-        <MyEditDownloadButton />
+        ></Canvas>
+        <ButtonBar>
+          <button onClick={startDrawing}>
+            <img src={draw} alt="start drawing" />
+          </button>
+          {visible2 && (
+            <StyledInput
+              type="number"
+              value={lineWidth}
+              onChange={e => setLineWidth(Number.parseFloat(e.target.value))}
+              placeholder="size"
+            />
+          )}
+          {visible2 && (
+            <button onClick={() => setVisible(!visible)}>
+              <img src={colors} alt="color palette" />
+            </button>
+          )}
+          {visible2 && (
+            <button
+              onClick={() => {
+                if (canvasRef.current) {
+                  canvasRef.current.clear();
+                }
+              }}
+            >
+              <img src={deleteAll} alt="delete all drawings" />
+            </button>
+          )}
+        </ButtonBar>
+        {visible && (
+          <StyledColorPicker className="small">
+            <HexColorPicker color={color} onChange={setColor} />
+          </StyledColorPicker>
+        )}
       </StyledBigImageContainer>
       <StyledFooter>
         <DownloadLink href={thisWallpaper.image} download={thisWallpaper.image}>
-          <StyledColorButtonContainer>
-            <DownloadButton />
-          </StyledColorButtonContainer>
+          <StyledColorButton>
+            <DownloadButton2 />
+          </StyledColorButton>
         </DownloadLink>
+        <div
+          onClick={() => {
+            if (canvasRef.current) {
+              canvasRef.current.download();
+            }
+          }}
+        >
+          <MyEditDownloadButton />
+        </div>
       </StyledFooter>
-    </>
+    </StyledMain>
   );
 }
-const fadeIn = keyframes`
-from {opacity:0
-}
-to { opacity:1; }
+
+const StyledBigImageContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  animation: ${fadeIn} 2s;
 `;
-const ButtonBar = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  button {
-    border: none;
-    background-color: transparent;
-    padding: 0;
-    margin-left: -3px;
-    margin-right: -3px;
-  }
-`;
-
-const StyledImage = styled.img`
-  height: 73vh;
-  border-radius: 10px;
-
-  @media (min-width: 390px) {
-    height: 78vh;
-  }
-  @media (min-width: 768px) {
-    height: 83vh;
-  }
-  @media (min-width: 912px) {
-    height: 86vh;
-  }
-`;
-
-const StyledColorButtonContainer = styled.div`
+const StyledColorButton = styled.div`
   button {
     background-color: #cd8282;
     img {
@@ -106,19 +140,4 @@ const StyledColorButtonContainer = styled.div`
       width: 80px;
     }
   }
-`;
-
-const DownloadLink = styled.a`
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-`;
-
-const StyledBigImageContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  animation: ${fadeIn} 2s;
 `;
