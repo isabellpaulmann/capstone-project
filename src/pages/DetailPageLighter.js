@@ -155,7 +155,6 @@ const StyledInputColor = styled.input.attrs({type: 'color'})`
   height: 55px;
   border-color: transparent;
   border: none;
-  box-shadow: 0px;
 `;
 
 const StyledBigImageContainer = styled.div`
