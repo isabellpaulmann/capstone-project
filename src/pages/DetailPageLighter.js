@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import {HexColorPicker} from 'react-colorful';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
@@ -30,11 +30,23 @@ export default function DetailPageLighter({wallpapersLight}) {
   const [lineWidth, setLineWidth] = useState(5);
   const canvasRef = useRef();
 
-  const [isDisabled, setIsDisabled] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
   const startDrawing = () => {
     setIsDisabled(!isDisabled);
     setVisible2(!visible2);
+    canvasRef.current.set('isActive', !isDisabled);
+    canvasRef.current.clearFilter();
   };
+
+  useEffect(() => {
+    const filter = `brightness(${imageStyle.brightness * 100}%) contrast(${imageStyle.contrast}) saturate(${
+      imageStyle.saturate * 100
+    }%)`;
+    if (canvasRef.current) {
+      canvasRef.current.setFilter(filter);
+    }
+    console.log(filter);
+  }, [imageStyle]);
 
   return (
     <StyledMain>
@@ -61,6 +73,7 @@ export default function DetailPageLighter({wallpapersLight}) {
           </button>
         </ButtonBar>
         <Canvas
+          id="canvas"
           color={color}
           lineWidth={lineWidth}
           ref={canvasRef}
@@ -128,11 +141,12 @@ export default function DetailPageLighter({wallpapersLight}) {
 const StyledBigImageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   animation: ${fadeIn} 2s;
 `;
-const StyledColorButton = styled.div`
+
+export const StyledColorButton = styled.div`
   button {
     background-color: #cd8282;
     img {
