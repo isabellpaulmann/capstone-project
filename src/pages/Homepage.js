@@ -27,7 +27,7 @@ const glowingLight = keyframes`
       box-shadow: 0 0 10px -10px #ca8484;
     }
     to {
-      box-shadow: 0 0 30px 10px #6C7339;
+      box-shadow: 0 0 30px 10px #5C5331;
     }
    
   `;

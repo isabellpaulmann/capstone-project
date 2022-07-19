@@ -1,12 +1,12 @@
 const wallpapersDark = [
   {
     id: 1,
-    image: '/wallpaper3.png',
+    image: '/wallpaper18.png',
     altIMG: 'colourful wallpaper',
   },
   {
     id: 2,
-    image: '/wallpaper4.png',
+    image: '/wallpaper19.png',
     altIMG: 'colourful wallpaper',
   },
   {
@@ -16,17 +16,17 @@ const wallpapersDark = [
   },
   {
     id: 4,
-    image: '/wallpaper14.png',
+    image: '/wallpaper8.png',
     altIMG: 'colourful wallpaper',
   },
   {
     id: 5,
-    image: '/wallpaper12.png',
+    image: '/wallpaper3.png',
     altIMG: 'colourful wallpaper',
   },
   {
     id: 6,
-    image: '/wallpaper8.png',
+    image: '/wallpaper4.png',
     altIMG: 'colourful wallpaper',
   },
   {
@@ -36,7 +36,7 @@ const wallpapersDark = [
   },
   {
     id: 8,
-    image: '/wallpaper11.png',
+    image: '/wallpaper14.png',
     altIMG: 'colourful wallpaper',
   },
 ];
