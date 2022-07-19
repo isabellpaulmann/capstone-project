@@ -2,11 +2,12 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {keyframes} from 'styled-components';
 
+import background from '../images/background.png';
 import Logo from '../images/logo.svg';
 
 export default function Homepage() {
   return (
-    <>
+    <BackgroundImage>
       <StyledSection>
         <header>
           <img src={Logo} alt="App Logo" />
@@ -18,7 +19,7 @@ export default function Homepage() {
           <StyledDarkerButton>darker</StyledDarkerButton>
         </Link>
       </StyledSection>
-    </>
+    </BackgroundImage>
   );
 }
 const glowingLight = keyframes`
@@ -26,16 +27,16 @@ const glowingLight = keyframes`
       box-shadow: 0 0 10px -10px #ca8484;
     }
     to {
-      box-shadow: 0 0 30px 10px #494949;
+      box-shadow: 0 0 30px 10px #6C7339;
     }
    
   `;
 const glowingDark = keyframes`
   from {
-    box-shadow: 0 0 14px -5px black;
+    box-shadow: 0 0 14px -5px #222;
   }
   to {
-    box-shadow: 0 0 40px 5px #292929;
+    box-shadow: 0 0 30px 10px #222;
   }
  
 `;
@@ -44,21 +45,31 @@ from {opacity:0
 }
 to { opacity:1; }
 `;
+const animatedBackground = keyframes`
+from { background-position: 0 0; }
+    to { background-position: 100% 0; }`;
 
 const StyledSection = styled.section`
   display: grid;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   grid-template-rows: 3fr 1fr 1fr 1fr;
   grid-gap: 25px;
   overflow: hidden;
 `;
+const BackgroundImage = styled.div`
+  background-image: url(${background});
+  height: 100vh;
+  width: auto;
+  animation: ${animatedBackground} 80s infinite alternate;
+  overflow: hidden;
+`;
 
 const StyledLighterButton = styled.button`
-  height: 100px;
-  width: 240px;
+  height: 95px;
+  width: 220px;
   background: #ca8484;
-  border: 5px solid #494949;
+  border: none;
   box-shadow: 1px 5px 15px #222;
   border-radius: 40px;
   font-family: Jua, sans-serif;
@@ -70,10 +81,10 @@ const StyledLighterButton = styled.button`
 `;
 
 const StyledDarkerButton = styled.button`
-  height: 100px;
-  width: 240px;
+  height: 95px;
+  width: 220px;
   background: #324050;
-  border: 5px solid #494949;
+  border: none;
   box-shadow: 1px 5px 15px #222;
   border-radius: 40px;
   font-family: Jua, sans-serif;

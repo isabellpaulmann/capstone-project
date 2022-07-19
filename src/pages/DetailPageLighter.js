@@ -111,19 +111,19 @@ export default function DetailPageLighter({wallpapersLight}) {
               <img src={deleteAll} alt="delete all drawings" />
             </button>
           )}
+          {visible && (
+            <StyledInputColor
+              type="color"
+              color={color}
+              onChange={event => {
+                setColor(event.target.value);
+                if (canvasRef.current) {
+                  canvasRef.current.set('color', event.target.value);
+                }
+              }}
+            />
+          )}
         </ButtonBar>
-        {visible && (
-          <StyledInputColor
-            type="color"
-            color={color}
-            onChange={event => {
-              setColor(event.target.value);
-              if (canvasRef.current) {
-                canvasRef.current.set('color', event.target.value);
-              }
-            }}
-          />
-        )}
       </StyledBigImageContainer>
       <StyledFooter>
         <DownloadLink href={thisWallpaper.image} download={thisWallpaper.image}>
@@ -147,12 +147,10 @@ export default function DetailPageLighter({wallpapersLight}) {
 
 const StyledInputColor = styled.input.attrs({type: 'color'})`
   background: none;
-  right: 22vw;
   color: #fff;
   cursor: pointer;
-  position: absolute;
   width: 55px;
-  height: 55px;
+  height: 48px;
   border-color: transparent;
   border: none;
 `;

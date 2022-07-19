@@ -28,7 +28,7 @@ export const ButtonBar = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-left: -3px;
+  margin-left: -5px;
   margin-right: -3px;
 
   button {
