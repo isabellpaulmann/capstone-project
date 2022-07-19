@@ -68,7 +68,7 @@ const BackgroundImage = styled.div`
 const StyledLighterButton = styled.button`
   height: 95px;
   width: 220px;
-  background: #ca8484;
+  background: #cd8282;
   border: none;
   box-shadow: 1px 5px 15px #222;
   border-radius: 40px;
@@ -83,7 +83,7 @@ const StyledLighterButton = styled.button`
 const StyledDarkerButton = styled.button`
   height: 95px;
   width: 220px;
-  background: #324050;
+  background: #495b70;
   border: none;
   box-shadow: 1px 5px 15px #222;
   border-radius: 40px;
