@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import downloadtrue from '../images/downloadtrue.svg';
 
-export default function MyEditDownloadButton() {
+export default function DownloadButton() {
   const customStyles = {
     content: {
       top: '50%',
@@ -35,9 +35,9 @@ export default function MyEditDownloadButton() {
   }
   return (
     <>
-      <StyledMyEditDownloadButton download onClick={openModal}>
-        download edited picture
-      </StyledMyEditDownloadButton>
+      <StyledDownloadButton2 onClick={openModal}>
+        download <br /> raw picture
+      </StyledDownloadButton2>
       <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}
@@ -50,10 +50,10 @@ export default function MyEditDownloadButton() {
     </>
   );
 }
-const StyledMyEditDownloadButton = styled.button`
+const StyledDownloadButton2 = styled.button`
   width: 142px;
   height: 48px;
-  background: #355719;
+  background: #305216;
   box-shadow: 1px 1px 15px #222;
   border-radius: 20px;
   border: none;
