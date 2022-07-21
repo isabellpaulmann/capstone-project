@@ -1,7 +1,7 @@
 import DownloadButton from '../components/DownloadButton';
 
 export default {
-  title: 'Komponenten/Download-Button',
+  title: 'components/Download-Button',
   component: DownloadButton,
 };
 

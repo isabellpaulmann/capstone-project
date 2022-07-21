@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledDownloadButton = styled.button`
   width: 110px;
   height: 28px;
-  background: #282544;
+  background: #495b70;
   box-shadow: 1px 1px 15px #222;
   border-radius: 12px;
   border: none;

@@ -61,6 +61,7 @@
     "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
     "react-scripts": "^5.0.1",
+    "storybook-addon-react-router-v6": "^0.1.10",
     "stylelint": "^13.13.1",
     "stylelint-a11y": "^1.2.3",
     "stylelint-config-prettier": "^8.0.2",
