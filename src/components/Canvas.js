@@ -5,6 +5,39 @@ const StyledCanvasWrapper = styled.div`
   position: relative;
   width: 236px;
   margin: 0 -3px;
+  @media (min-width: 360px) {
+    width: 220px;
+  }
+  @media (min-width: 374px) {
+    width: 236px;
+  }
+  @media (min-width: 390px) {
+    width: 252px;
+  }
+  @media (min-width: 411px) {
+    width: 265px;
+  }
+  @media (min-width: 412px) {
+    width: 278px;
+  }
+  @media (min-width: 414px) {
+    width: 275px;
+  }
+  @media (min-width: 540px) {
+    width: 255px;
+  }
+  @media (min-width: 768px) {
+    width: 370px;
+  }
+  @media (min-width: 820px) {
+    width: 460px;
+  }
+  @media (min-width: 912px) {
+    width: 548px;
+  }
+  @media (min-width: 913px) {
+    width: 330px;
+  }
 `;
 
 const StyledCanvas = styled.canvas`
