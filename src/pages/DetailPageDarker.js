@@ -170,9 +170,6 @@ const StyledBigImageContainer = styled.div`
   @media (min-width: 414px) {
     margin-top: 60px;
   }
-  @media (min-width: 414px) {
-    margin-top: 60px;
-  }
   @media (min-width: 540px) {
     margin-top: 5px;
   }
