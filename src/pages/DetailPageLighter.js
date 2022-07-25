@@ -163,16 +163,16 @@ const StyledBigImageContainer = styled.div`
   animation: ${fadeIn} 2s;
 
   @media (min-width: 390px) {
-    margin-top: 6vh;
+    margin-top: 3vh;
   }
   @media (min-width: 411px) {
     margin-top: 1px;
   }
   @media (min-width: 412px) {
-    margin-top: 6vh;
+    margin-top: 3vh;
   }
   @media (min-width: 414px) {
-    margin-top: 6vh;
+    margin-top: 3vh;
   }
   @media (min-width: 540px) {
     margin-top: 5px;
